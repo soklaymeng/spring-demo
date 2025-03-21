@@ -4,10 +4,6 @@ pipeline {
         maven 'Maven' // Ensure 'Maven' matches the Maven tool configured in Jenkins
     }
 
-    environment {
-        SONAR_HOST_URL = "http://localhost:9000" // SonarQube URL
-    }
-
     stages {
         stage('Git Checkout') {
             steps {
@@ -24,7 +20,7 @@ pipeline {
                         mvn clean verify sonar:sonar \
                             -Dsonar.projectKey=spring-demo \
                             -Dsonar.projectName="spring-demo" \
-                            -Dsonar.host.url=${SONAR_HOST_URL} \
+                            -Dsonar.host.url=http://localhost:9000 \
                             -Dsonar.login=${SONAR_TOKEN}  // Use the token from Jenkins credentials
                         '''
                         echo 'SonarQube Analysis Completed'
