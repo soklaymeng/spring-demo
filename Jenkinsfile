@@ -4,9 +4,16 @@ pipeline {
         maven 'Maven'
     }
 
+<<<<<<< HEAD
      environment {
          SONAR_HOST_URL = "http://localhost:9000"
      }
+=======
+    environment {
+        // Change to the container name or IP
+        SONAR_HOST_URL = "http://localhost:9000"
+    }
+>>>>>>> cd62850934452884419fd2476663692966505e1c
 
     stages {
         stage('Git Checkout') {
@@ -18,8 +25,8 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarQube1') { // Ensure 'SonarQube1' matches your Jenkins global tool configuration
-                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) { // Add your SonarQube token in Jenkins Credentials
+                withSonarQubeEnv('sonarqube') {
+                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
                         sh '''
                         mvn clean verify sonar:sonar \
                           -Dsonar.projectKey=spring-demo \
