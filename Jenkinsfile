@@ -6,7 +6,7 @@ pipeline {
 
     environment {
         // Change to the container name or IP
-        SONAR_HOST_URL = "http://sonarqube-202511104738-sonarqube-1:9000"
+        SONAR_HOST_URL = "http://localhost:9000"
     }
 
     stages {
