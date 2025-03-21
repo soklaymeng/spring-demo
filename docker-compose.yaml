@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 092367169
+      POSTGRES_DB: spring_data_jpa_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  spring:
+    image: spring-data-jpa-app  # This should be the name of the image you built
+    container_name: spring_data_jpa_container
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/spring_data_jpa_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 092367169
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_OPEN_IN_VIEW: true
+    ports:
+      - "8181:8181"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+    driver: local
+
