@@ -19,7 +19,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube1') { // Ensure 'SonarQube1' matches your Jenkins global tool configuration
-                    withCredentials([string(credentialsId: 'jenkins-sonar', variable: 'SONAR_TOKEN')]) { // Add your SonarQube token in Jenkins Credentials
+                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) { // Add your SonarQube token in Jenkins Credentials
                         sh '''
                         mvn clean verify sonar:sonar \
                           -Dsonar.projectKey=spring-demo \
