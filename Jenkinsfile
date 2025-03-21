@@ -5,7 +5,6 @@ pipeline {
     }
 
     environment {
-        // Change to the container name or IP
         SONAR_HOST_URL = "http://localhost:9000"
     }
 
@@ -20,7 +19,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonarqube') {
-                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                    withCredentials([string(credentialsId: 'sonar-token', variable: 'sonarqube')]) {
                         sh '''
                         mvn clean verify sonar:sonar \
                           -Dsonar.projectKey=spring-demo \
