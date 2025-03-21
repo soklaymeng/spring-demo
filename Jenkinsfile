@@ -1,21 +1,35 @@
-ipeline {
-    agent any 
-    
-    stages { 
-        stage('SCM Checkout') {
-            steps{
-           git branch: 'main', url: 'https://github.com/soklaymeng/spring-demo.git'
+pipeline {
+    agent any
+    tools {
+        maven 'Maven'
+    }
+
+    environment {
+        SONAR_HOST_URL = "http://localhost:9000" 
+    }
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/soklaymeng/spring-demo.git']])
+                echo 'Git Checkout Completed'
             }
         }
-        // run sonarqube test
-        stage('Run Sonarqube') {
-            environment {
-                scannerHome = tool 'SonarQube1';
-            }
+
+        stage('SonarQube Analysis') {
             steps {
-              withSonarQubeEnv(credentialsId: 'sonar-token', installationName: 'spring-demo') {
-                sh "${scannerHome}/bin/sonar-scanner"
-              }
+                withSonarQubeEnv('SonarQube1') { // Ensure 'SonarQube1' matches your Jenkins global tool configuration
+                    withCredentials([string(credentialsId: 'jenkins-sonar', variable: 'SONAR_TOKEN')]) { // Add your SonarQube token in Jenkins Credentials
+                        sh '''
+                        mvn clean verify sonar:sonar \
+                          -Dsonar.projectKey=spring-demo \
+                          -Dsonar.projectName="spring-demo" \
+                          -Dsonar.host.url=${SONAR_HOST_URL} \
+                          -Dsonar.login=${SONAR_TOKEN}
+                        '''
+                        echo 'SonarQube Analysis Completed'
+                    }
+                }
             }
         }
     }
