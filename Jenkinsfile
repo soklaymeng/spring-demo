@@ -34,7 +34,7 @@ pipeline {
                             -Dsonar.projectKey=spring-demo \
                             -Dsonar.projectName="spring-demo" \
                             -Dsonar.host.url=$SONAR_HOST_URL \
-                            -Dsonar.login=squ_78ae43da673205b378582064f6f0f7e625d94fa2
+                            -Dsonar.login=$SONAR_TOKEN
                         '''
                         echo 'SonarQube Analysis Completed'
                     }

@@ -102,11 +102,10 @@
 				<extensions>true</extensions>
 				<configuration>
 					<debugSentryCli>true</debugSentryCli>
-<!--					<org>ctg-fi</org>-->
+
 					<org>sentry</org>
-<!--					<project>spring-log4j2</project>-->
+
 					<project>spring-project</project>
-<!--					<authToken>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</authToken>&ndash;&gt;-->
 				<authToken>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</authToken>
 				</configuration>
 				<executions>
