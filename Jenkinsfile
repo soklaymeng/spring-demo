@@ -5,9 +5,8 @@ pipeline {
     }
 
     environment {
-        SONAR_HOST_URL = "http://localhost:9000"
+    SONAR_HOST_URL = "http://172.18.0.3:9000"
     }
-
     stages {
         stage('Git Checkout') {
             steps {
