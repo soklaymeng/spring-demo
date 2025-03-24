@@ -97,7 +97,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!--			sonarqube plugin-->
+			<!--			sonarqube plugin-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
@@ -115,7 +115,7 @@
 					<org>sentry</org>
 
 					<project>spring-project</project>
-				<authToken>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</authToken>
+					<authToken>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</authToken>
 				</configuration>
 				<executions>
 					<execution>
