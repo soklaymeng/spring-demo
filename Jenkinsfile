@@ -22,8 +22,8 @@ pipeline {
                     withCredentials([string(credentialsId: 'sonar-token', variable: 'sonarqube')]) {
                         sh '''
                         mvn clean verify sonar:sonar \
-                          -Dsonar.projectKey=spring-test \
-                          -Dsonar.projectName="spring-test" \
+                          -Dsonar.projectKey=spring-demo \
+                          -Dsonar.projectName="spring-demo" \
                           -Dsonar.host.url=${SONAR_HOST_URL} \
                           -Dsonar.login=${SONAR_TOKEN}
                         '''
