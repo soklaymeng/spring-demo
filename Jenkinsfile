@@ -6,7 +6,6 @@ pipeline {
 
    environment {
     SONAR_HOST_URL = "http://localhost:9000"
-    SONAR_TOKEN = "squ_78ae43da673205b378582064f6f0f7e625d94fa2"
 }
 
     stages {
