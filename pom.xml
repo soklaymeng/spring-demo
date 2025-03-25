@@ -33,18 +33,18 @@
 		<java.version>17</java.version>
 		<sentry.version>6.28.0</sentry.version> <!-- Define sentry version -->
 	</properties>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.sentry</groupId>
-				<artifactId>sentry-bom</artifactId>
-				<version>${sentry.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+<!--	<dependencyManagement>-->
+<!--		<dependencies>-->
+<!--			<dependency>-->
+<!--				<groupId>io.sentry</groupId>-->
+<!--				<artifactId>sentry-bom</artifactId>-->
+<!--				<version>${sentry.version}</version>-->
+<!--				<type>pom</type>-->
+<!--				<scope>import</scope>-->
+<!--			</dependency>-->
 
-		</dependencies>
-	</dependencyManagement>
+<!--		</dependencies>-->
+<!--	</dependencyManagement>-->
 	<dependencies>
 
 		<dependency>
@@ -53,11 +53,11 @@
 		</dependency>
 
 		<!-- Sentry Log4j2 Integration -->
-		<dependency>
-			<groupId>io.sentry</groupId>
-			<artifactId>sentry-log4j2</artifactId>
-			<version>${sentry.version}</version> <!-- Use the defined version -->
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.sentry</groupId>-->
+<!--			<artifactId>sentry-log4j2</artifactId>-->
+<!--			<version>${sentry.version}</version> &lt;!&ndash; Use the defined version &ndash;&gt;-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -65,16 +65,16 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Sentry OpenTelemetry Agent (if you plan to use OpenTelemetry) -->
-		<dependency>
-			<groupId>io.sentry</groupId>
-			<artifactId>sentry-opentelemetry-agent</artifactId>
-			<version>8.3.0</version>
-		</dependency>
-		<dependency>
-			<groupId>io.sentry</groupId>
-			<artifactId>sentry-spring-boot-starter-jakarta</artifactId>
-		</dependency>
+<!--		&lt;!&ndash; Sentry OpenTelemetry Agent (if you plan to use OpenTelemetry) &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>io.sentry</groupId>-->
+<!--			<artifactId>sentry-opentelemetry-agent</artifactId>-->
+<!--			<version>8.3.0</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>io.sentry</groupId>-->
+<!--			<artifactId>sentry-spring-boot-starter-jakarta</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.restdocs</groupId>
 			<artifactId>spring-restdocs-mockmvc</artifactId>
@@ -104,27 +104,27 @@
 				<version>3.9.0.2155</version>
 			</plugin>
 			<!-- Sentry Maven Plugin (if you are using source map upload) -->
-			<plugin>
-				<groupId>io.sentry</groupId>
-				<artifactId>sentry-maven-plugin</artifactId>
-				<version>0.3.0</version>
-				<extensions>true</extensions>
-				<configuration>
-					<debugSentryCli>true</debugSentryCli>
+<!--			<plugin>-->
+<!--				<groupId>io.sentry</groupId>-->
+<!--				<artifactId>sentry-maven-plugin</artifactId>-->
+<!--				<version>0.3.0</version>-->
+<!--				<extensions>true</extensions>-->
+<!--				<configuration>-->
+<!--					<debugSentryCli>true</debugSentryCli>-->
 
-					<org>sentry</org>
+<!--					<org>sentry</org>-->
 
-					<project>spring-project</project>
-					<authToken>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</authToken>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>uploadSourceBundle</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!--					<project>spring-project</project>-->
+<!--					<authToken>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</authToken>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>uploadSourceBundle</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 </project>
